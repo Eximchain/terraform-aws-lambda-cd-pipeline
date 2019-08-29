@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - npm install -g typescript
+  pre_build:
+    commands:
+      - mkdir build
+  build:
+    commands:
+      - "${build_command}"
+artifacts:
+  name: BUILD
+  base-directory: ${deployment_directory}
+  files:
+    - "${deployment_package_filename}"
