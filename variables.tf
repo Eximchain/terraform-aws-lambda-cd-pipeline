@@ -50,6 +50,24 @@ variable "build_command" {
   default     = ":"
 }
 
+variable "npm_user" {
+  description = "Username for the NPM account which the builder should log into before installing dependencies."
+  // Using an empty string causes an error on apply
+  default     = "NULL"
+}
+
+variable "npm_pass" {
+  description = "Password for the NPM account which the builder should log into before installing dependencies."
+  // Using an empty string causes an error on apply
+  default     = "NULL"
+}
+
+variable "npm_email" {
+  description = "Email for the NPM account which the builder should log into before installing dependencies."
+  // Using an empty string causes an error on apply
+  default     = "NULL"
+}
+
 variable "id" {
   description = "Short, unique, descriptive name for resource naming purposes. Will use a UUID if not provided"
   default     = ""

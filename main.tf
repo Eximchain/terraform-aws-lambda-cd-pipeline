@@ -250,6 +250,21 @@ resource "aws_codebuild_project" "lambda_builder" {
     type         = "LINUX_CONTAINER"
     compute_type = "BUILD_GENERAL1_SMALL"
     image        = "aws/codebuild/standard:2.0"
+
+    environment_variable {
+      name  = "NPM_USER"
+      value = var.npm_user
+    }
+
+    environment_variable {
+      name  = "NPM_PASS"
+      value = var.npm_pass
+    }
+
+    environment_variable {
+      name  = "NPM_EMAIL"
+      value = var.npm_email
+    }
   }
 
   artifacts {
@@ -264,6 +279,7 @@ resource "aws_codebuild_project" "lambda_builder" {
         deployment_directory        = var.deployment_directory
         deployment_package_filename = var.deployment_package_filename
         build_command               = var.build_command
+        do_npm_login                = var.npm_user != "NULL" && var.npm_pass != "NULL" && var.npm_email != "NULL"
       }
     )
   }

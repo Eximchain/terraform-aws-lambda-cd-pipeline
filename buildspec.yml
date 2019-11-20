@@ -4,12 +4,15 @@ phases:
     runtime-versions:
       nodejs: 10
     commands:
-      - npm install -g typescript
+      - npm install -g typescript npm-cli-login
   pre_build:
     commands:
       - mkdir build
   build:
     commands:
+      %{~ if do_npm_login ~}
+      - npm-cli-login -u $NPM_USER -p $NPM_PASS -e $NPM_EMAIL
+      %{~ endif ~}
       - "${build_command}"
 artifacts:
   name: BUILD
