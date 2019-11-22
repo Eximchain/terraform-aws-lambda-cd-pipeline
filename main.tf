@@ -249,7 +249,7 @@ resource "aws_codebuild_project" "lambda_builder" {
   environment {
     type         = "LINUX_CONTAINER"
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "aws/codebuild/standard:2.0"
+    image        = "aws/codebuild/amazonlinux2-x86_64-standard:1.0"
 
     environment_variable {
       name  = "NPM_USER"
