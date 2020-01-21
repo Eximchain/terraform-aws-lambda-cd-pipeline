@@ -303,7 +303,7 @@ resource "aws_lambda_function" "update_functions_lambda" {
   role             = aws_iam_role.update_functions_lambda_iam.arn
   handler          = "index.handler"
   source_code_hash = filebase64sha256("${path.module}/lambda-deploy-lambda.zip")
-  runtime          = "nodejs8.10"
+  runtime          = "nodejs12.x"
   timeout          = 60
 
   environment {
